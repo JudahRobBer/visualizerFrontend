@@ -26,7 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/api/code/route.tsx"
-  ],
+    "app/api/code/route.ts"
+, "app/components/task/CodeEditor.tsx"  ],
   "exclude": ["node_modules"]
 }

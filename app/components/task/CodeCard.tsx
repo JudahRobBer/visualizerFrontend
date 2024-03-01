@@ -1,27 +1,60 @@
 import React, { useState } from "react";
+import CodeEditor from "./CodeEditor";
 
-function CodeCard() {
-  const [code, setCode] = useState("");
+interface Probs {
+  code: string;
+  setCode: (input: string) => void;
+}
+
+function CodeCard({ code, setCode }: Probs) {
+  // const [code, setCode] = useState("");
   const [output, setOutput] = useState("");
 
   const handleRunCode = async () => {
-    // Function to run the Python code
-    // Here you would call an API or a backend service that will execute the Python code
-    // and then set the output with the result.
-    // For now, we'll just simulate the output.
-    console.log(code);
-    setOutput("Result of the executed code will be shown here");
+    // Send the code to the server
+    try {
+      const response = await fetch("../api/code", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        if (result.error) {
+          setOutput(result.error);
+        } else {
+          setOutput(result.message);
+        }
+
+        // You can also set the output to the result of executing the code, depending on your API's response
+      } else {
+        // Handle server errors or invalid responses
+        setOutput("Failed to send code to the server.");
+      }
+    } catch (error) {
+      // Handle network errors
+      console.error("Error sending code to the server:", error);
+      setOutput("Network error while trying to send code to the server.");
+    }
   };
 
   return (
     <div className="rounded-lg flex flex-col h-screen mx-2">
       {/* Code Input Section */}
-      <textarea
+      {/* <textarea
         className="flex-1 resize-none p-4 rounded-lg"
         value={code}
         onChange={(e) => setCode(e.target.value)}
         placeholder="Enter Python code here..."
-      ></textarea>
+      ></textarea> */}
+
+      <div className="flex-1 resize-none p-4 rounded-lg">
+        <CodeEditor code={code} setCode={setCode}></CodeEditor>
+      </div>
 
       {/* Run Button */}
       <button

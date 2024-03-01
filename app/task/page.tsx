@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 // import TaskPageLayout from "./TaskPageLayout";
 import TaskCard from "../components/task/TaskCard";
 import CodeCard from "../components/task/CodeCard";
 import CodexCard from "../components/task/CodexCard";
 
 function Page() {
+  const [code, setCode] = useState("");
+
   const handleButtonClick = () => {
     console.log("Button clicked!");
   };
@@ -23,9 +25,11 @@ function Page() {
   return (
     <div className="flex flex-row h-screen">
       <div className="basis-1/3">{task}</div>
-      <div className="basis-1/3">{<CodeCard></CodeCard>}</div>
       <div className="basis-1/3">
-        <CodexCard></CodexCard>
+        {<CodeCard code={code} setCode={setCode}></CodeCard>}
+      </div>
+      <div className="basis-1/3">
+        <CodexCard code={code} setCode={setCode}></CodexCard>
       </div>
     </div>
   );
