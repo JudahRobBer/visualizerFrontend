@@ -17,7 +17,7 @@ This application is suitable for:
 
 
 ## Technology Stack
-- **Next.js**: A React framework for building user interfaces and static websites.
+- **Next.js**: A React framework for building user interfaces and static websites. Please note that the new "app" project structure is used.
 - **Tailwind CSS**: A utility-first CSS framework for rapidly building custom designs.
 - **TypeScript**: A superset of JavaScript providing static type checking.
 - **ESLint**: A static code analysis tool for identifying problematic patterns in JavaScript code.
