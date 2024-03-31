@@ -1,5 +1,3 @@
-
+print("test\n")
 import random
-number = random.randint(1, 6)
-
-print(number)
+print(random.randint(1, 10))
