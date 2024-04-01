@@ -41,7 +41,7 @@ cd code-learning-env
 npm install
 ```
 
-4. You would need to create a .env folder in the main directory and add in it GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+4. You would need to create a .env file in the main directory and add in it GEMINI_API_KEY=YOUR_GEMINI_API_KEY
 
 ## Getting Started
 
