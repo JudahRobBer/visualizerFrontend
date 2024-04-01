@@ -19,7 +19,8 @@ export async function POST(request: NextRequest) {
   try {
     const result = await model.generateContent(inst);
     const response = await result.response;
-    return NextResponse.json({ response: response.text() });
+    const cleanedResponse:string = cleanResponse(response);
+    return NextResponse.json({ response: cleanedResponse });
   } catch (error) {
     console.error("Failed to connect to gemini:", error);
     return NextResponse.json({
@@ -27,4 +28,13 @@ export async function POST(request: NextRequest) {
       error: (error as Error).message,
     });
   }
+}
+
+function cleanResponse(response:any): string {
+  //hardcoded method to clean gemini response string
+  //removes '''python from the beginning and ''' from the end
+  const responseString:string = response.text();
+  const cleanedResponse:string = responseString.substring(10,responseString.length - 4);
+  console.log(cleanedResponse)
+  return cleanedResponse;
 }
