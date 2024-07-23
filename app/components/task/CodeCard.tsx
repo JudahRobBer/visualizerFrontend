@@ -13,7 +13,7 @@ function CodeCard({ code, setCode }: Probs) {
   const handleRunCode = async () => {
     // Send the code to the server
     try {
-      const response = await fetch("../api/code", {
+      const response = await fetch("../api/dependencyGraph", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +27,7 @@ function CodeCard({ code, setCode }: Probs) {
         if (result.error) {
           setOutput(result.error);
         } else {
-          setOutput(result.message);
+          //setOutput(result.message);
         }
 
         // You can also set the output to the result of executing the code, depending on your API's response
