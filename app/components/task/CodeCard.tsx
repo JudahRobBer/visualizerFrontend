@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import CodeEditor from "./CodeEditor";
 
 interface Probs {
   code: string;
@@ -51,10 +50,6 @@ function CodeCard({ code, setCode }: Probs) {
         onChange={(e) => setCode(e.target.value)}
         placeholder="Enter Python code here..."
       ></textarea> */}
-
-      <div className="flex-1 resize-none p-4 rounded-lg">
-        <CodeEditor code={code} setCode={setCode}></CodeEditor>
-      </div>
 
       {/* Run Button */}
       <button
