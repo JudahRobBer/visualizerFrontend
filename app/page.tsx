@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import TaskCard from "./components/task/TaskCard";
 import CodeCard from "./components/task/CodeCard";
 import CodexCard from "./components/task/CodexCard";
+import CodeEditor from "./components/task/CodeEditor";
 
 function Page() {
   const [code, setCode] = useState("");
@@ -24,12 +25,11 @@ function Page() {
 
   return (
     <div className="flex flex-row h-screen">
-      <div className="basis-1/3">{task}</div>
-      <div className="basis-1/3">
-        {<CodeCard code={code} setCode={setCode}></CodeCard>}
+      <div className="basis-1/2 resize-none p-4 rounded-lg">
+	<CodeEditor code={code} setCode={setCode}></CodeEditor>
       </div>
-      <div className="basis-1/3">
-        <CodexCard code={code} setCode={setCode}></CodexCard>
+      <div className="basis-1/2">
+        {<CodeCard code={code} setCode={setCode}></CodeCard>}
       </div>
     </div>
   );
