@@ -14,15 +14,6 @@ function Page() {
     console.log("Button clicked!");
   };
 
-  const task = (
-    <TaskCard
-      title="Task Description:"
-      description="Write a program that first, generates two random numbers between 1 and 6 and check if both of the variables are greater than 3 (either 4, 5, or 6). If both are greater than 3, then first display their values and then in another line, display the message: both rolled greater than 3"
-      buttonText="Submit to Grade"
-      onButtonClick={handleButtonClick}
-    />
-  );
-
   return (
     <div className="flex flex-row h-screen">
       <div className="basis-1/2 resize-none p-4 rounded-lg">
