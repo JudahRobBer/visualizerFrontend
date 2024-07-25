@@ -68,6 +68,3 @@ function CodeCard({ code, setCode }: Probs) {
 }
 
 export default CodeCard;
-
-  );
-}
