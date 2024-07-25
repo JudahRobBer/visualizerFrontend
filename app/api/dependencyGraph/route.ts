@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
     const code = data.code;
     const payload = {"source":code};
     try {
-        const response = await fetch('http://localhost:8000/endpoint/', {
+        const response = await fetch('http://localhost:80/endpoint/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
