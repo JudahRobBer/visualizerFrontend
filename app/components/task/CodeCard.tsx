@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import CodeEditor from "./CodeEditor";
 
 interface Probs {
   code: string;
@@ -52,10 +51,6 @@ function CodeCard({ code, setCode }: Probs) {
         placeholder="Enter Python code here..."
       ></textarea> */}
 
-      <div className="flex-1 resize-none p-4 rounded-lg">
-        <CodeEditor code={code} setCode={setCode}></CodeEditor>
-      </div>
-
       {/* Run Button */}
       <button
         className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 my-2 mx-4 rounded"
@@ -69,6 +64,11 @@ function CodeCard({ code, setCode }: Probs) {
         {output || "Output will be displayed here..."}
       </div>
     </div>
+  );
+}
+
+export default CodeCard;
+
   );
 }
 
