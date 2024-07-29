@@ -12,21 +12,20 @@ function CodeCard({ code, setCode }: Probs) {
   const handleRunCode = async () => {
     // Send the code to the server
     try {
-      const response = await fetch("../api/dependencyGraph", {
+      const response = await fetch("../api/dependencyGraph/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ code }),
       });
-
+      console.log("test")
       if (response.ok) {
-        const result = await response.json();
-        console.log(result);
+        var result = await response.json();
         if (result.error) {
           setOutput(result.error);
         } else {
-          //setOutput(result.message);
+          setOutput(JSON.stringify(result));
         }
 
         // You can also set the output to the result of executing the code, depending on your API's response
@@ -37,19 +36,12 @@ function CodeCard({ code, setCode }: Probs) {
     } catch (error) {
       // Handle network errors
       console.error("Error sending code to the server:", error);
-      setOutput("Network error while trying to send code to the server.");
+      setOutput("Network error.");
     }
   };
 
   return (
     <div className="rounded-lg flex flex-col h-screen mx-2">
-      {/* Code Input Section */}
-      {/* <textarea
-        className="flex-1 resize-none p-4 rounded-lg"
-        value={code}
-        onChange={(e) => setCode(e.target.value)}
-        placeholder="Enter Python code here..."
-      ></textarea> */}
 
       {/* Run Button */}
       <button
